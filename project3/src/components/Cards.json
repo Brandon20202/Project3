@@ -1,0 +1,34 @@
+[
+	{
+		"id": 1,
+		"title": "Ramons Lanscaping",
+		"price": "$35.00/BiWeekly",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate praesentium aut ratione laudantium laboriosam accusamus.",
+		"avatarSrc": "/assets/img/landsc1.jpeg",
+		"imgsrc": "/assets/img/landsc1.jpeg"
+	},
+	{
+		"id": 2,
+		"title": "WeCut Lanscaping",
+		"price": "$35.00/BiWeekly",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate praesentium aut ratione laudantium laboriosam accusamus.",
+		"avatarSrc": "/assets/img/landsc2.jpeg",
+		"imgsrc": "/assets/img/landsc2.jpeg"
+	},
+	{
+		"id": 3,
+		"title": "Cut-Cut Lanscaping",
+		"price": "$35.00/BiWeekly",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate praesentium aut ratione laudantium laboriosam accusamus.",
+		"avatarSrc": "/assets/img/landsc3.jpeg",
+		"imgsrc": "/assets/img/landsc3.jpeg"
+	},
+	{
+		"id": 4,
+		"title": "Trim-Trim Lanscaping",
+		"price": "$35.00/BiWeekly",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate praesentium aut ratione laudantium laboriosam accusamus.",
+		"avatarSrc": "/assets/img/landsc4.jpeg",
+		"imgsrc": "/assets/img/landsc4.jpeg"
+	}
+]
