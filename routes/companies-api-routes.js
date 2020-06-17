@@ -1,6 +1,7 @@
 var db =require("../models");
 
 module.exports = function(app){
+
     app.get("/api/companies",function(req, res){
         var query ={};
         if(req.query.companies_id){
@@ -35,5 +36,10 @@ module.exports = function(app){
         }).then(function(dbCompanies){
             res.json(dbCompanies);
         });
+    });
+    app.get("/api/keys",function(req, res){
+        db.Keys.findAll({}).then(function(dbKeys) {
+            res.json(dbKeys)
+        })
     });
 };

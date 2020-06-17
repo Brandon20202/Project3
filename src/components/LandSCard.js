@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Email from "./Email";
 
 const useStyles = makeStyles((theme) => ({
 	media: {
@@ -92,6 +93,7 @@ const LandSCard = (props) => {
 					<Typography paragraph>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis aut temporibus mollitia rem corporis nesciunt!</Typography>
 					<Typography paragraph>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic deserunt nulla eveniet incidunt aliquam fugit vel praesentium. Repellat, repellendus sit?</Typography>
 					<Typography>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, temporibus.</Typography>
+					<Email />
 				</CardContent>
 			</Collapse>
 		</Card>
