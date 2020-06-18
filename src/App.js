@@ -1,49 +1,31 @@
-import React, { Component } from 'react';
-import NavBar from "./components/NavBar";
-// import { useAuth0 } from "./react-auth0-spa";
-import Menu from './components/Menu/Menu'
-import SidePanel from './components/SidePanel/Sidepanel';
+import React from 'react';
+import NavBar from './components/NavBar';
+import {useAuth0} from './react-auth0-spa';
+import {Grid} from '@material-ui/core';
+import Content from './components/Content';
 
+function App() {
+	const {loading} = useAuth0();
 
+	if (loading) {
+		return <div>Loading...</div>;
+	}
 
-class App extends Component {
-
-  state = {
-    menuPanelOpen: false
-  }
-  menuToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { menuPanelOpen: !prevState.menuPanelOpen };
-    });
-  };
-
-  sidetoggleClickHandler = () => {
-    this.setState({ menuPanelOpen: false });
-  }
-
-  render() {
-    let menuPanel;
-    let sidepanel;
-
-    if (this.state.menuPanelOpen) {
-      menuPanel = <Menu />;
-      sidepanel = <SidePanel click={this.sidetoggleClickHandler} />
-    }
-    return (
-      <div style={{ height: '100%' }}>
-        <NavBar menuClickHandler={this.menuToggleClickHandler} />
-        <Menu show={this.state.menuPanelOpen} />
-        {sidepanel}
-        <main style={{ marginTop: '64px' }}>
-          <p>This is a page content</p>
-        </main>
-      </div>
-    );
-  }
+	return (
+		<div className="App">
+			<header>
+				<NavBar />
+				<Grid container direction="column">
+					<Grid item container>
+						<Grid items xs={false} sm={2} />
+						<Grid item xs={12} sm={8} />
+					</Grid>
+					<Content />
+					<Grid item xs={false} sm={2} />
+				</Grid>
+			</header>
+		</div>
+	);
 }
+
 export default App;
-
-
-
-
-

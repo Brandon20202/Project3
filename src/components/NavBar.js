@@ -1,55 +1,54 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
-import "./NavBar.css";
-import Sidetoggle from './SideToggle/Sidetoggle'
+import "./navBarStyle.css";
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 
-const NavBar = props => {
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+    },
+    bg: {
+        backgroundColor: '#00a82d',
+        color: 'white'
+    }
+}));
 
+export default function ButtonAppBar() {
+    const classes = useStyles();
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-    
-
-
     return (
-        <header className="navbar">
-            <nav className="navbar_navigation">
-                <div className="navbar__toggle-button">
-                    <Sidetoggle click={props.menuClickHandler} />
-                </div>
-                <div className="navbar_logo"><a href="/">Lime Tree</a></div>
-                <div className="navbar_space"></div>
-                <div className="navbar_navigation-items">
-                    <ul>
-                        <li><a href="/">Services</a></li>
+        <div className={classes.root}>
+            <AppBar position="static" className={classes.bg}>
+                <Toolbar>
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" className={classes.title}>
+                        Lime Tree
+                    </Typography>
+                    <Button color="inherit">Services</Button>
+                    <div>
+                        {!isAuthenticated && (
+                            <Button className="logInButton" color="inherit" onClick={() => loginWithRedirect({})}>Log In</Button>
+                        )}
 
-                        <div>
-                            {!isAuthenticated && (
-                                <button onClick={() => loginWithRedirect({})}>Login</button>
-                            )}
-
-                            {isAuthenticated && <button onClick={() => logout()}>Log Out</button>}
-                        </div>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+                        {isAuthenticated && <Button className="logOutButton" color="inherit" onClick={() => logout()}>Log Out</Button>}
+                    </div>
+                </Toolbar>
+            </AppBar>
+        </div>
     );
-
-};
-
-// const { loading } = useAuth0();
-  
-// if (loading) {
-//   return <div>Loading...</div>;
-// }
-
-// return (
-//   <div className="App">
-//     <header>
-//       <NavBar />
-//     </header>
-//   </div>
-// );
-
-export default NavBar;
-
+}
