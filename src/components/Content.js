@@ -1,5 +1,4 @@
 import React from 'react';
-import LCCard from './LCCard';
 import {Grid} from '@material-ui/core';
 import landSCList from './Cards.json';
 import LandSCard from './LandSCard';
