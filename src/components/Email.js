@@ -1,6 +1,6 @@
 import React from "react";
-import { apiServer } from "nylas";
-import API from "../utils/API";
+// import { apiServer } from "nylas";
+// import API from "../utils/API";
 
 class Email extends React.Component {
 

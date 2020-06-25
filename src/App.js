@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, BrowserRouter, Switch, Link} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {useAuth0} from './react-auth0-spa';
+// import {useAuth0} from './react-auth0-spa';
 import {Grid} from '@material-ui/core';
 import Content from './components/Content';
 import Home from './components/Home';
@@ -11,11 +11,11 @@ import Home from './components/Home';
 import './App.css';
 
 function App() {
-	const {loading} = useAuth0();
+	// const {loading} = useAuth0();
 
-	if (loading) {
-		return <div>Loading...</div>;
-	}
+	// if (loading) {
+	// 	return <div>Loading...</div>;
+	// }
 
 	return (
 		<div className="App">

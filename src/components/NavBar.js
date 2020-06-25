@@ -1,5 +1,5 @@
 import React from 'react';
-import {useAuth0} from '../react-auth0-spa';
+// import {useAuth0} from '../react-auth0-spa';
 import './navBarStyle.css';
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
 	const classes = useStyles();
-	const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+	// const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
 	return (
 		<div className={classes.root}>
 			<AppBar position="static" className={classes.bg}>
@@ -39,7 +39,7 @@ export default function ButtonAppBar() {
 						Lime Tree
 					</Typography>
 					<Button color="inherit">Services</Button>
-					<div>
+					{/* <div>
 						{!isAuthenticated && (
 							<Button className="logInButton" color="inherit" onClick={() => loginWithRedirect({})}>
 								Log In
@@ -51,7 +51,7 @@ export default function ButtonAppBar() {
 								Log Out
 							</Button>
 						)}
-					</div>
+					</div> */}
 				</Toolbar>
 			</AppBar>
 		</div>
