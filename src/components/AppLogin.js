@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import 'whatwg-fetch';
 import { getFromStorage, setInStorage } from "../utils/storage";
-import {Grid} from '@material-ui/core';
+import {Grid, withTheme} from '@material-ui/core';
 import Content from '../components/Content';
 
 class Home extends Component {
@@ -9,7 +8,6 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      // isLoading: true,
       token: '',
       signUpError: '',
       signInError: '',
@@ -35,7 +33,7 @@ class Home extends Component {
     this.onNewSignUp = this.onNewSignUp.bind(this);
 
     this.onLogOut = this.onLogOut.bind(this);
-  }
+  };
 
   componentDidMount() {
 
@@ -199,8 +197,19 @@ class Home extends Component {
 
   render() {
 
+    const loginStyle = {
+      color: 'white',
+      backgroundColor: '#00a82d',
+      width: '30%',
+      height: '215px',
+      marginLeft: '35%'
+    }
+
+    const inputStyle = {
+      width: '95%'
+    }
+
     const {
-      isLoading,
       token,
       signUpError,
       signInError,
@@ -213,24 +222,20 @@ class Home extends Component {
       signedUp
     } = this.state;
 
-    if (isLoading) {
-      return (<div><p>Loading...</p></div>)
-    }
-
     if (!token && signedUp) {
       return ( 
-        <div>
+        <div style={loginStyle}>
           {
             (signInError) ? (
             <p>{signInError}</p>
             ) : (null)
           }
           <p>Sign In</p>
-          <input type="text" placeholder="User Name" value={signInUserName} onChange={this.onTextBoxChangeSignInUserName}/>
+          <input style={inputStyle} type="text" placeholder="User Name" value={signInUserName} onChange={this.onTextBoxChangeSignInUserName}/>
           <br />
-          <input type="password" placeholder="Password" value={signInPassword} onChange={this.onTextBoxChangeSignInPassword}/>
+          <input style={inputStyle} type="password" placeholder="Password" value={signInPassword} onChange={this.onTextBoxChangeSignInPassword}/>
           <br />
-          <input type="email" placeholder="Email" value={signInEmail} onChange={this.onTextBoxChangeSignInEmail}/>
+          <input style={inputStyle} type="email" placeholder="Email" value={signInEmail} onChange={this.onTextBoxChangeSignInEmail}/>
           <br />
           <button onClick={this.onSignIn}>Sign In</button>
           <br />
@@ -242,18 +247,18 @@ class Home extends Component {
 
     if (!signedUp) {
       return (
-        <div>
+        <div style={loginStyle}>
           {
             (signUpError) ? (
             <p>{signUpError}</p>
             ) : (null)
           }
           <p>Sign Up</p>
-          <input type="text" placeholder="User Name" value={signUpUserName} onChange={this.onTextBoxChangeSignUpUserName}/>
+          <input style={inputStyle} type="text" placeholder="User Name" value={signUpUserName} onChange={this.onTextBoxChangeSignUpUserName}/>
           <br />
-          <input type="password" placeholder="Password" value={signUpPassword} onChange={this.onTextBoxChangeSignUpPassword}/>
+          <input style={inputStyle} type="password" placeholder="Password" value={signUpPassword} onChange={this.onTextBoxChangeSignUpPassword}/>
           <br />
-          <input type="email" placeholder="Email" value={signUpEmail} onChange={this.onTextBoxChangeSignUpEmail}/>
+          <input style={inputStyle} type="email" placeholder="Email" value={signUpEmail} onChange={this.onTextBoxChangeSignUpEmail}/>
           <br />
           <button onClick={this.onSignUp}>Sign Up</button>
         </div>

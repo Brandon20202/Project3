@@ -26,8 +26,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ButtonAppBar() {
+
 	const classes = useStyles();
-	// const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+
 	return (
 		<div className={classes.root}>
 			<AppBar position="static" className={classes.bg}>
@@ -39,19 +40,6 @@ export default function ButtonAppBar() {
 						Lime Tree
 					</Typography>
 					<Button color="inherit">Services</Button>
-					{/* <div>
-						{!isAuthenticated && (
-							<Button className="logInButton" color="inherit" onClick={() => loginWithRedirect({})}>
-								Log In
-							</Button>
-						)}
-
-						{isAuthenticated && (
-							<Button className="logOutButton" color="inherit" onClick={() => logout()}>
-								Log Out
-							</Button>
-						)}
-					</div> */}
 				</Toolbar>
 			</AppBar>
 		</div>
