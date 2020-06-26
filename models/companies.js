@@ -1,38 +1,14 @@
-module.exports= function(sequalize, DataTypes){
-    var Companies = sequalize.define("Companies",{
+const mongoose =require("mongoose");
+const Schema = mongoose.Schema;
 
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate:{
-                len:[1]
-            }
-        },
-        phone:{
-            type: DataTypes.INTERGER,
-            allowNull:false,
-            validate:{
-                len:[1]
-            }
-        },
-        email:{
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate:{
-                len:[1]
-            }
-        },
-        price:{
-            type: DataTypes.DECIMAL,
-            allowNull: false,
-            validate:{
-                len:[1]
-            }
-        }
+const CompaniesSchema = new Schema({
+    title:{ type : String, required: true},
+    phone:{type: String, required: true},
+    email:{type: String, required: true},
+    prices:{type: String, required: true},
+    Jobs:{type: String, required: true}
+});
 
+const Companies = mongoose.model("Companies", CompaniesSchema);
 
-
-    });
-
-    return Companies;
-};
+module.exports= Companies;
