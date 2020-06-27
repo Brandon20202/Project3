@@ -15,9 +15,11 @@ import LaunchIcon from '@material-ui/icons/Launch';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
+import './navBarStyle.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -88,6 +90,7 @@ const drawerWidth = 240;
 
 export default function ButtonAppBar() {
 	const classes = useStyles();
+
 	const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
