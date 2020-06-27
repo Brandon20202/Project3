@@ -9,19 +9,32 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import {Typography, Paper, Box} from '@material-ui/core';
 import {red} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Email from "./Email";
+import Email from './Email';
+import Typed from 'react-typed';
 
 const useStyles = makeStyles((theme) => ({
 	media: {
 		height: 0,
 
 		paddingTop: '56.25%', // 16:9
+	},
+	title: {
+		color: '#205723',
+		fontFamily: 'Segoe UI Symbol',
+		fontStyle: 'oblique',
+	},
+	description: {
+		color: '#8bc34a',
+		opacity: '0.8',
+	},
+	paragraph: {
+		color: 'black',
 	},
 	expand: {
 		transform: 'rotate(0deg)',
@@ -33,13 +46,15 @@ const useStyles = makeStyles((theme) => ({
 	expandOpen: {
 		transform: 'rotate(180deg)',
 	},
-	avatar: {
+
+	avatarP: {
 		backgroundColor: red[500],
+		borderWidth: '20',
 	},
 }));
 
 const LandSCard = (props) => {
-	const {avatarSrc, title, subtitle, description, imgsrc} = props;
+	const {avatarP, avatarSrc, title, subtitle, description, imgsrc} = props;
 	const classes = useStyles();
 	const [expanded, setExpanded] = React.useState(false);
 
@@ -50,22 +65,33 @@ const LandSCard = (props) => {
 	return (
 		<Card>
 			<CardHeader
-				avatar={<Avatar src={avatarSrc} />}
+				avatar={
+					<Avatar aria-label="recipe" className={classes.avatarP}>
+						{avatarP}
+					</Avatar>
+				}
 				action={
 					<IconButton aria-label="settings" aria-label="add to favorites">
 						<ShareIcon />
 						<FavoriteIcon />
 					</IconButton>
 				}
-				action={<IconButton aria-label="settings">{<MoreVertIcon />}</IconButton>}
+				action={
+					<IconButton color="primary" aria-label="settings">
+						{<MoreVertIcon />}
+					</IconButton>
+				}
+				className={classes.title}
 				title={title}
 				subheader={subtitle}
 			/>
-			<CardMedia style={{height: '150px'}} image={imgsrc} />
+			<CardMedia style={{height: '160px'}} image={imgsrc} />
 
 			<CardContent>
-				<Typography variant="body2" color="textSecondary" component="p">
-					{description}
+				<Typography className={classes.description} variant="body2" color="textSecondary" component="p">
+					<Box fontWeight="fontWeightBold" fontStyle="oblique">
+						{description}
+					</Box>
 				</Typography>
 			</CardContent>
 			<CardActions disableSpacing>
@@ -87,14 +113,31 @@ const LandSCard = (props) => {
 				</IconButton>
 			</CardActions>
 			<Collapse in={expanded} timeout="auto" unmountOnExit>
-				<CardContent>
-					<Typography paragraph>Focus:</Typography>
-					<Typography paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, id?</Typography>
-					<Typography paragraph>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis aut temporibus mollitia rem corporis nesciunt!</Typography>
-					<Typography paragraph>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic deserunt nulla eveniet incidunt aliquam fugit vel praesentium. Repellat, repellendus sit?</Typography>
-					<Typography>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, temporibus.</Typography>
-					<Email />
-				</CardContent>
+				<Paper elevation="2">
+					<CardContent>
+						<Paper elevation="1">
+							<Typography variant="h6" color="initial" className={classes.TypographyStyles}>
+								<Box fontFamily="Monospace">
+									<Typed strings={['Focus:']} typeSpeed={40} backSpeed={60} />
+								</Box>
+							</Typography>
+							<Typography className={classes.paragraph} variant="button" paragraph>
+								<Box fontFamily="Monospace">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, id?</Box>
+							</Typography>
+							<Typography className={classes.paragraph} variant="button" paragraph>
+								<Box fontFamily="Monospace">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, id?</Box>
+							</Typography>
+							<Typography className={classes.paragraph} variant="button" paragraph>
+								<Box fontFamily="Monospace">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, id?</Box>
+							</Typography>
+							<Typography className={classes.paragraph} variant="button" paragraph>
+								<Box fontFamily="Monospace">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, id?</Box>
+							</Typography>
+						</Paper>
+						<br />
+						<Email />
+					</CardContent>
+				</Paper>
 			</Collapse>
 		</Card>
 	);

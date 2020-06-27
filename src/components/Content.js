@@ -6,13 +6,13 @@ import LandSCard from './LandSCard';
 const Content = () => {
 	const landSCCard = (lansCardObj) => {
 		return (
-			<Grid item xs={3} sm={3}>
+			<Grid item xs={6} sm={4}>
 				<LandSCard {...lansCardObj} />
 			</Grid>
 		);
 	};
 	return (
-		<Grid container spacing={2}>
+		<Grid container spacing={3} style={{padding: 30}}>
 			{landSCList.map((lansCardObj) => landSCCard(lansCardObj))}
 		</Grid>
 	);
