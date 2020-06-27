@@ -1,11 +1,12 @@
 import React from 'react';
 import {Route, BrowserRouter, Switch, Link} from 'react-router-dom';
 import NavBar from './components/NavBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import {useAuth0} from './react-auth0-spa';
-import {Grid} from '@material-ui/core';
+import {Grid, makeStyles} from '@material-ui/core';
 import Content from './components/Content';
 import Home from './components/Home';
+import CheckBoxes from './components/CheckBoxes';
+
 // import Header from './components/Header';
 
 import './App.css';
@@ -23,9 +24,9 @@ function App() {
 				<BrowserRouter>
 					<NavBar />
 
-					<li>
+					{/* <li>
 						<Link to="/">Home</Link>
-					</li>
+					</li> */}
 					{/* <li>
 						<Link to="/NavBar">NavBar</Link>
 					</li>
@@ -35,10 +36,11 @@ function App() {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/content" component={Content} />
+						<Route exact path="/checkbox" component={CheckBoxes} />
 
-						<Route exact path="/navBar" component={NavBar} />
+						{/* <Route exact path="/navBar" component={NavBar} /> */}
 					</Switch>
-					<CssBaseline />
+
 					<Grid container direction="column">
 						<Grid item container>
 							<Grid items xs={false} sm={2} />

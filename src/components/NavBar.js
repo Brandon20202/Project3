@@ -19,6 +19,9 @@ import './navBarStyle.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Locations from './Locations';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -114,6 +117,22 @@ export default function ButtonAppBar() {
 						<Typography variant="h6" className={classes.title} nowrap>
 							Lime Tree
 					</Typography>
+ placesbar
+					<Locations />
+					<Button color="inherit">Services</Button>
+					<div>
+						{!isAuthenticated && (
+							<Button className="logInButton" color="inherit" onClick={() => loginWithRedirect({})}>
+								Log In
+							</Button>
+						)}
+
+						{isAuthenticated && (
+							<Button className="logOutButton" color="inherit" onClick={() => logout()}>
+								Log Out
+							</Button>
+						)}
+
 						<Button color="inherit">Services</Button>
 						<div>
 							{!isAuthenticated && (
@@ -135,6 +154,7 @@ export default function ButtonAppBar() {
 						<IconButton onClick={handleDrawerClose}>
 							{theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 						</IconButton>
+ master
 					</div>
 					<Divider />
 					<List>

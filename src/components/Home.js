@@ -1,25 +1,29 @@
 import React from 'react';
 import {Typography, Box} from '@material-ui/core';
 import Typed from 'react-typed';
+import {makeStyles} from '@material-ui/core/styles';
+import CheckBoxes from './CheckBoxes';
+import Grid from '@material-ui/core/Grid';
 
-const useStyles = () => ({
+const useStyles = makeStyles({
 	title: {
-		color: 'textPrimary',
+		color: 'white',
+		fontWeight: '500',
+		fontStyle: 'oblique',
 	},
-
-	// typedContainer: {
-	// 	position: 'absolute',
-	// 	top: '50%',
-	// 	left: '50%',
-	// 	transform: 'translate(-50%, -50%',
-	// 	width: '100vw',
-	// 	textAlign: 'center',
-	// 	zIndex: 3,
-	// },
+	subtitle: {
+		color: 'white',
+		fontWeight: 'Light',
+		fontStyle: 'oblique',
+	},
+	typography: {
+		fontFamily: 'Apple Color Emoji',
+	},
 });
 
 const Home = () => {
 	const classes = useStyles();
+
 	return (
 		<Box className={classes.typedContainer}>
 			<Typography className={classes.title} variant="h1" align="center" color="secondary">
@@ -27,8 +31,12 @@ const Home = () => {
 			</Typography>
 			<br />
 			<Typography className={classes.subtitle} variant="h4" align="center" color="secondary">
-				<Typed strings={['Find The Best Landscaping Service...']} typeSpeed={40} backSpeed={60} />
+				<Typed strings={['Find The Best Landscaping Service!!!']} typeSpeed={40} backSpeed={60} />
 			</Typography>
+			<br />
+			<Grid container justify="center">
+				<CheckBoxes />
+			</Grid>
 		</Box>
 	);
 };
