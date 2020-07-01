@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS userlogin;
-CREATE DATABASE userlogin;
