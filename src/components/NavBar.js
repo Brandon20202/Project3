@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useAuth0 } from '../react-auth0-spa';
 import clsx from 'clsx';
@@ -15,13 +14,9 @@ import LaunchIcon from '@material-ui/icons/Launch';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
-import './navBarStyle.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Locations from './Locations';
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow: 1,
 	},
 	link: {
-        textDecoration: 'none',
-        color: theme.palette.text.primary
-    },
+		textDecoration: 'none',
+		color: theme.palette.text.primary
+	},
 	appBar: {
 		backgroundColor: '#00a82d',
 		color: 'white',
@@ -93,7 +88,6 @@ const drawerWidth = 240;
 
 export default function ButtonAppBar() {
 	const classes = useStyles();
-
 	const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
@@ -109,30 +103,15 @@ export default function ButtonAppBar() {
 		<Router>
 			<div className={classes.root}>
 				<CssBaseline />
-				<AppBar position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: open, })}>
+				<AppBar position="fixed" className={clsx(classes.appBar, { [classes.appBarShift]: open, })}>
 					<Toolbar>
 						<IconButton edge="start" className={clsx(classes.menuButton, open && classes.hide)} color="inherit" aria-label="open drawer" onClick={handleDrawerOpen}>
 							<MenuIcon />
 						</IconButton>
+
 						<Typography variant="h6" className={classes.title} nowrap>
 							Lime Tree
-					</Typography>
- placesbar
-					<Locations />
-					<Button color="inherit">Services</Button>
-					<div>
-						{!isAuthenticated && (
-							<Button className="logInButton" color="inherit" onClick={() => loginWithRedirect({})}>
-								Log In
-							</Button>
-						)}
-
-						{isAuthenticated && (
-							<Button className="logOutButton" color="inherit" onClick={() => logout()}>
-								Log Out
-							</Button>
-						)}
-
+						</Typography>
 						<Button color="inherit">Services</Button>
 						<div>
 							{!isAuthenticated && (
@@ -154,7 +133,6 @@ export default function ButtonAppBar() {
 						<IconButton onClick={handleDrawerClose}>
 							{theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 						</IconButton>
- master
 					</div>
 					<Divider />
 					<List>
@@ -209,5 +187,6 @@ export default function ButtonAppBar() {
 				</Switch>
 			</div>
 		</Router>
+
 	);
 }

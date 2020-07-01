@@ -25,7 +25,6 @@ function App() {
 			<NavBar />
 			<header>
 				<BrowserRouter>
-					<li>
 					<NavBar />
 
 					{/* <li>
