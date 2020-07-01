@@ -1,3 +1,8 @@
+.App {
+	text-align: center;
+}
+
+
 body {
 	background: url('/assets/img/main3.png') no-repeat fixed center;
 	/* -webkit-background: cover;
@@ -5,3 +10,14 @@ body {
 	-o-background: cover; */
 	background-size: cover;
 }
+
+.page-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+  }
+  
+  .content-wrap {
+	flex: 1;
+  }
+  

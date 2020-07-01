@@ -6,8 +6,8 @@ import {useAuth0} from './react-auth0-spa';
 import {Grid} from '@material-ui/core';
 import Content from './components/Content';
 import Home from './components/Home';
+import Footer from './Footer';
 // import Header from './components/Header';
-
 import './App.css';
 
 function App() {
@@ -18,11 +18,11 @@ function App() {
 	}
 
 	return (
-		<div className="App">
+		<div className="page-container">
+			<div className="content-wrap">
+			<NavBar />
 			<header>
 				<BrowserRouter>
-					<NavBar />
-
 					<li>
 						<Link to="/">Home</Link>
 					</li>
@@ -49,6 +49,9 @@ function App() {
 					</Grid>
 				</BrowserRouter>
 			</header>
+			
+			</div>
+			<Footer />
 		</div>
 	);
 }
