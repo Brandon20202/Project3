@@ -14,12 +14,10 @@ const SignUpStrategty = new Strategy({ passReqToCallback: true }, function(req, 
         return done("Please fill out all fields")
     };
 
-    console.log(email)
-
     User.findOne({ email: email }, function(err, user) {
 
         if (user) {
-            return done("Account already exists")
+            return done(null, false, { message: "Account already exists" })
         }
         if (err) {
             return done(err);
@@ -28,14 +26,15 @@ const SignUpStrategty = new Strategy({ passReqToCallback: true }, function(req, 
             const encryptedPassword = bcrypt.hashSync(passWord, salt);
     
             let newUser = new User({
-            username,
+            userName: username,
             password: encryptedPassword,
             email
             });
 
             User.create(newUser)
-                .then(function(res) {
-                    return done(null, res.json)
+                .then(function(user) {
+                    console.log(user)
+                    return done(null, user)
                 })
                 .catch(function(err) {
                     return done(err, null)

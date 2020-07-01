@@ -1,6 +1,5 @@
 const passport = require("passport");
 
-// const googleStrategy = require("./Google");
 const SignUpStrategy = require("./SignUp");
 const LogInStrategy = require("./LogIn");
 

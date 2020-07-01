@@ -14,17 +14,20 @@ const LogInStrategty = new Strategy({ passReqToCallback: true }, function(req, u
         return done("Please fill out all fields")
     }
 
-    User.findOne({ email: email }, function(err, user) {
+    User.findOne({ userName: userName, email: email }, function(err, user) {
+
         if (user) {
-            const isPasswordValid = bcrypt.compareSync(passWord, dbUser.password);
+            const isPasswordValid = bcrypt.compareSync(passWord, user.password);
 
             if (!isPasswordValid) {
-                return done("Invalid credintials, please try agian")
+                return done(null, false, { message: "Invalid credintials, please try agian" })
             }
 
-            return done(null, dbUser) 
+            return done(null, user) 
+        } else if (err) {
+            return done(err)
         } else {
-            return done("Account not found, please try agin", null)
+            return done(null, false, { message: "Account not found, please try agin" })
         }
     });
 

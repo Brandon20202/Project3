@@ -1,5 +1,6 @@
 import React from "react";
-// import axios from "axios;"
+import axios from "axios";
+import { Redirect } from "react-router-dom";
 // import { response } from "express";
 
 class Login extends React.Component {
@@ -9,7 +10,9 @@ class Login extends React.Component {
         this.state = {
             userName: '',
             password: '',
-            email: ''
+            email: '',
+            redirect: null,
+            error: false
         }
 
         this.handleUsernameAndPassChange = this.handleUsernameAndPassChange.bind(this);
@@ -38,28 +41,28 @@ class Login extends React.Component {
     };
 
     handleSubmit(event) {
-        // axios.post('/user/login', {
-        //     username: this.state.userName,
-        //     password: this.state.password,
-        //     email: this.state.email
-        // })
-        //     .then(response => {
-        //         console.log('login response:')
-        //         console.log(response)
-        //         if (response.status === 200) {
-        //             this.props.updateUser({
-        //                 loggedIn: true,
-        //                 username: response.data.username
-        //             })
-        //             this.setState({
-        //                 redirectTo: '/'
-        //             })
-        //         }
-        //     })
-        //     .catch(error => {
-        //         console.log('login error: ')
-        //         console.log(error);
-        //     });
+        event.preventDefault();
+
+        const user = {
+            username: this.state.userName,
+            password: this.state.password,
+            email: this.state.email
+        }
+
+        console.log(user)
+
+        axios.post('/authentication/login', user)
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    redirect: "/content"
+                })
+            })
+            .catch(err => {
+                this.setState({
+                    error: true
+                })
+            })
     };
 
     render() {
@@ -70,27 +73,81 @@ class Login extends React.Component {
             width: '30%',
             height: '215px',
             margin: '0 auto'
-          };
-      
-          const inputStyle = {
+        };
+
+        const inputStyle = {
             width: '100%'
-          };
-      
-          const centeringAuth = {
+        };
+
+        const centeringAuth = {
             width: '95%',
             margin: '0 auto'
-          }
+        };
+
+        if (this.state.redirect) {
+            return (
+                <Redirect to={this.state.redirect} />
+            )
+        };
+
+        if (this.error) {
+            
+            return(
+                <div style={loginStyle}>
+                    <div style={centeringAuth}>
+                        <h2>Sign Up</h2>
+                        <p>Log In failed. Please try again.</p>
+                        <form>
+                            <label>
+                                User Name
+                                    <input 
+                                        style={inputStyle}
+                                        name='userName'
+                                        type='text'
+                                        onChange={this.handleUsernameAndPassChange}
+                                    />
+                            </label>
+                            <br />
+                            <label>
+                                Password
+                                    <input 
+                                        style={inputStyle}
+                                        name='password'
+                                        type='password'
+                                        onChange={this.handleUsernameAndPassChange}
+                                    />
+                            </label>
+                            <br />
+                            <label>
+                                Email
+                                    <input 
+                                        style={inputStyle}
+                                        name='email'
+                                        type='email'
+                                        onChange={this.handleEmailChange}
+                                    />
+                            </label>
+                            <button onClick={this.handleSubmit}>
+                                Sign Up
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )
+
+        };
 
         return(
             <div style={loginStyle}>
                 <div style={centeringAuth}>
+                    <hs>Log In</hs>
                     <form>
                         <label>
                             User Name
                                 <input 
                                     style={inputStyle}
                                     name='userName'
-                                    type='text'
+                                    type='test'
                                     onChange={this.handleUsernameAndPassChange}
                                 />
                         </label>
@@ -100,7 +157,7 @@ class Login extends React.Component {
                                 <input 
                                     style={inputStyle}
                                     name='password'
-                                    type='text'
+                                    type='password'
                                     onChange={this.handleUsernameAndPassChange}
                                 />
                         </label>
@@ -120,8 +177,8 @@ class Login extends React.Component {
                     </form>
                 </div>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Login

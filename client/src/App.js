@@ -31,6 +31,7 @@ function App() {
 						<Route exact path="/" component={Home} />
 						<Route exact path="/login" component={HomeLogIn} />
 						<Route exact path="/signup" component={HomeSignUp} />
+						<Route exact path="/content" component={Content} />
 						<Route exact path="/navBar" component={NavBar} />
 					</Switch>
 					<CssBaseline />
