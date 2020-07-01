@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { getFromStorage, setInStorage } from "../utils/storage";
 import {Grid, withTheme} from '@material-ui/core';
-import Content from '../components/Content';
+import Content from './Content';
 
-class Home extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
 
@@ -37,6 +37,9 @@ class Home extends Component {
 
   componentDidMount() {
 
+    const url = window.location.href;
+    console.log(url)
+
     const obj = getFromStorage('the_main_app');
     console.log(obj);
 
@@ -46,7 +49,7 @@ class Home extends Component {
         isLoading: false
       })
 
-      fetch('/api/account/verify?token=' + token)
+      fetch(url + '/api/account/verify?token=' + token)
       .then(res => res.json())
       .then(json => {
         console.log(json)
@@ -62,13 +65,7 @@ class Home extends Component {
         }
       });
     }
-    //  else {
-    //   this.setState({
-    //     isLoading: false
-    //   }).catch(function(err) {
-    //     console.log(err)
-    //   })
-    // }
+
   }
 
   onTextBoxChangeSignUpUserName(event) {
@@ -97,7 +94,10 @@ class Home extends Component {
         token
     } = this.state;
 
-    fetch('/api/account/signup', {
+    const url = window.location.href;
+    console.log(url)
+
+    fetch(url + 'http://localhost:3001/api/account/signup', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'
@@ -113,6 +113,7 @@ class Home extends Component {
                 signUpError: json.message
             });
         });
+
   };
 
   onTextBoxChangeSignInUserName(event) {
@@ -173,12 +174,15 @@ class Home extends Component {
   }
 
   onLogOut() {
+
+    const url = window.location.href;
+    console.log(url)
     
     const obj = getFromStorage('the_main_app');
 
     let token = obj.token;
 
-    fetch('/api/account/logout?token=' + token)
+    fetch(url + 'http://localhost:3001/api/account/logout?token=' + token)
     .then(res => res.json())
     .then(json => {
       if (json.success) {
@@ -193,6 +197,7 @@ class Home extends Component {
         })
       }
     });
+
   }
 
   render() {
@@ -202,11 +207,16 @@ class Home extends Component {
       backgroundColor: '#00a82d',
       width: '30%',
       height: '215px',
-      marginLeft: '35%'
-    }
+      margin: '0 auto'
+    };
 
     const inputStyle = {
-      width: '95%'
+      width: '100%'
+    };
+
+    const centeringAuth = {
+      width: '95%',
+      margin: '0 auto'
     }
 
     const {
@@ -225,6 +235,7 @@ class Home extends Component {
     if (!token && signedUp) {
       return ( 
         <div style={loginStyle}>
+          <div style={loginStyle}>
           {
             (signInError) ? (
             <p>{signInError}</p>
@@ -241,6 +252,7 @@ class Home extends Component {
           <br />
           <p>Don't have an account yet?</p>
           <button onClick={this.onNewSignUp}>Sign Up</button>
+          </div>
         </div>
       )
     }
@@ -248,6 +260,7 @@ class Home extends Component {
     if (!signedUp) {
       return (
         <div style={loginStyle}>
+          <div style={centeringAuth}>
           {
             (signUpError) ? (
             <p>{signUpError}</p>
@@ -260,7 +273,8 @@ class Home extends Component {
           <br />
           <input style={inputStyle} type="email" placeholder="Email" value={signUpEmail} onChange={this.onTextBoxChangeSignUpEmail}/>
           <br />
-          <button onClick={this.onSignUp}>Sign Up</button>
+          <button onClick={this.onSignUp(signUpUserName, signUpPassword, signUpEmail)}>Sign Up</button>
+          </div>
         </div>
       )
     }
@@ -284,4 +298,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default SignIn;

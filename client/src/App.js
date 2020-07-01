@@ -5,6 +5,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import {Grid} from '@material-ui/core';
 import Content from './components/Content';
 import Home from './components/Home';
+import HomeLogIn from './components/LogIn';
+import HomeSignUp from './components/SignUp';
 
 import './App.css';
 
@@ -27,8 +29,8 @@ function App() {
 					</li> */}
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route exact path="/content" component={Content} />
-
+						<Route exact path="/login" component={HomeLogIn} />
+						<Route exact path="/signup" component={HomeSignUp} />
 						<Route exact path="/navBar" component={NavBar} />
 					</Switch>
 					<CssBaseline />

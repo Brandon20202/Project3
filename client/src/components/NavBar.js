@@ -40,6 +40,8 @@ export default function ButtonAppBar() {
 						Lime Tree
 					</Typography>
 					<Button color="inherit">Services</Button>
+					<Button color="inherit" href="/login">Log In</Button>
+					<Button color="inherit" href="/signup">Sign Up</Button>
 				</Toolbar>
 			</AppBar>
 		</div>

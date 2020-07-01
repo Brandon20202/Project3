@@ -1,7 +1,7 @@
 import React from 'react';
 import {Typography, Box} from '@material-ui/core';
 import Typed from 'react-typed';
-import AppLogin from './AppLogin'
+import Login from './login-form'
 
 const useStyles = () => ({
 	title: {
@@ -19,7 +19,7 @@ const useStyles = () => ({
 	// },
 });
 
-const Home = () => {
+const HomeLogIn = () => {
 	const classes = useStyles();
 	return (
 		<Box className={classes.typedContainer}>
@@ -30,9 +30,9 @@ const Home = () => {
 			<Typography className={classes.subtitle} variant="h4" align="center" color="secondary">
 				<Typed strings={['Find The Best Landscaping Service...']} typeSpeed={40} backSpeed={60} />
 			</Typography>
-			<AppLogin />
+            <Login />
 		</Box>
 	);
 };
 
-export default Home;
+export default HomeLogIn;
