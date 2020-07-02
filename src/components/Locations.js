@@ -41,11 +41,10 @@ export default function GoogleMaps() {
 	const [inputValue, setInputValue] = React.useState('');
 	const [options, setOptions] = React.useState([]);
 	const loaded = React.useRef(false);
-	const API_KEY = 'AIzaSyDpaKSGxiyn-Ahep_9DdFW1LCHGRx0PIqQ';
 
 	if (typeof window !== 'undefined' && !loaded.current) {
 		if (!document.querySelector('#google-maps')) {
-			loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDpaKSGxiyn-Ahep_9DdFW1LCHGRx0PIqQ&libraries=places', document.querySelector('head'), 'google-maps');
+			loadScript(`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`, document.querySelector('head'), 'google-maps');
 		}
 
 		loaded.current = true;
