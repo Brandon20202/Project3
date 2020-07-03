@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+.main-footer {
+    width: 100vw;
+    display: block;
+    overflow: hidden;
+    padding: 70px 0;
+    box-shadow: border-box;
+    background-color: #00a82d;
+}
+
+.innerfooter {
+    display: block;
+    margin: 0 auto;
+    width: 1100px;
+    height: 100%;
+}
+
+.innerfooter .logo {
+    width: 35%;
+    float: left;
+    height: 100%;
+    display: block;
+}
+
+.innerfooter .logo h1 {
+    width: 60px;
+    height: auto;
+    color : white;
+    text-align: center;
+}
+
+.innerfooter .firstcontent {
+    width: calc(21.67% - 20px);
+    margin-right: 10px;
+    float: left;
+    height: 100%;
+    color: white;
+}
+
+.innerfooter .firstcontent:last-child {
+    margin-right: 0;
+}
+
+.innerfooter .firstcontent h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.innerfooter .firstcontent li {
+    display: inline-block;
+    padding: 0 5px;
+    font-size: 20px;
+}
+
+.innerfooter .firstcontent a {
+    color: white;
+}
+
+
+.innerfooter .firstcontent span {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    display: block;
+    width: 100%;
+    padding-top: 20px;
+}
+
+@media(max-width: 600px) {
+    footer .innerfooter {
+        width: 90%;
+    }
+    .innerfooter .logo, .innerfooter .firstcontent {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}

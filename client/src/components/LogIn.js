@@ -1,27 +1,21 @@
 import React from 'react';
 import {Typography, Box} from '@material-ui/core';
 import Typed from 'react-typed';
-import Login from './login-form'
+import Login from './login-form';
+import NavBarLogIn from './NavBarLogin'
 
 const useStyles = () => ({
 	title: {
 		color: 'textPrimary',
 	},
 
-	// typedContainer: {
-	// 	position: 'absolute',
-	// 	top: '50%',
-	// 	left: '50%',
-	// 	transform: 'translate(-50%, -50%',
-	// 	width: '100vw',
-	// 	textAlign: 'center',
-	// 	zIndex: 3,
-	// },
 });
 
 const HomeLogIn = () => {
 	const classes = useStyles();
 	return (
+		<div>
+		<NavBarLogIn />
 		<Box className={classes.typedContainer}>
 			<Typography className={classes.title} variant="h1" align="center" color="secondary">
 				<Typed strings={['Landscaping For All']} typeSpeed={40} />
@@ -32,6 +26,7 @@ const HomeLogIn = () => {
 			</Typography>
             <Login />
 		</Box>
+		</div>
 	);
 };
 

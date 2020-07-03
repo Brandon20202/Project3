@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid} from '@material-ui/core';
 import landSCList from './Cards.json';
 import LandSCard from './LandSCard';
+import NavBarLogOut from "./NavBarLogout"
 
 const Content = () => {
 	const landSCCard = (lansCardObj) => {
@@ -12,9 +13,13 @@ const Content = () => {
 		);
 	};
 	return (
+		<div>
+		<NavBarLogOut />
 		<Grid container spacing={2}>
+			
 			{landSCList.map((lansCardObj) => landSCCard(lansCardObj))}
 		</Grid>
+		</div>
 	);
 };
 

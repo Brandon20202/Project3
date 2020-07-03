@@ -20,14 +20,14 @@ const LogInStrategty = new Strategy({ passReqToCallback: true }, function(req, u
             const isPasswordValid = bcrypt.compareSync(passWord, user.password);
 
             if (!isPasswordValid) {
-                return done(null, false, { message: "Invalid credintials, please try agian" })
+                return done(null, false, { message: "Invalid credintials, please try again" })
             }
 
-            return done(null, user) 
+            return done(null, user)
         } else if (err) {
             return done(err)
         } else {
-            return done(null, false, { message: "Account not found, please try agin" })
+            return done(null, false, { message: "Account not found, please try again" })
         }
     });
 

@@ -11,8 +11,7 @@ class Login extends React.Component {
             userName: '',
             password: '',
             email: '',
-            redirect: null,
-            error: false
+            redirect: null
         }
 
         this.handleUsernameAndPassChange = this.handleUsernameAndPassChange.bind(this);
@@ -49,14 +48,20 @@ class Login extends React.Component {
             email: this.state.email
         }
 
-        console.log(user)
-
         axios.post('/authentication/login', user)
             .then(res => {
-                console.log(res)
-                this.setState({
-                    redirect: "/content"
-                })
+
+                if (res.data.message === "Account not found, please try again") {
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
+                    document.getElementById('email').value = '';
+                    alert(res.data.message)
+                } else if (res.data.email) {
+                    this.setState({
+                        redirect: "/content"
+                    })
+                }
+
             })
             .catch(err => {
                 this.setState({
@@ -87,64 +92,18 @@ class Login extends React.Component {
         if (this.state.redirect) {
             return (
                 <Redirect to={this.state.redirect} />
-            )
-        };
-
-        if (this.error) {
-            
-            return(
-                <div style={loginStyle}>
-                    <div style={centeringAuth}>
-                        <h2>Sign Up</h2>
-                        <p>Log In failed. Please try again.</p>
-                        <form>
-                            <label>
-                                User Name
-                                    <input 
-                                        style={inputStyle}
-                                        name='userName'
-                                        type='text'
-                                        onChange={this.handleUsernameAndPassChange}
-                                    />
-                            </label>
-                            <br />
-                            <label>
-                                Password
-                                    <input 
-                                        style={inputStyle}
-                                        name='password'
-                                        type='password'
-                                        onChange={this.handleUsernameAndPassChange}
-                                    />
-                            </label>
-                            <br />
-                            <label>
-                                Email
-                                    <input 
-                                        style={inputStyle}
-                                        name='email'
-                                        type='email'
-                                        onChange={this.handleEmailChange}
-                                    />
-                            </label>
-                            <button onClick={this.handleSubmit}>
-                                Sign Up
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            )
-
+            );
         };
 
         return(
             <div style={loginStyle}>
                 <div style={centeringAuth}>
-                    <hs>Log In</hs>
+                    <h2>Log In</h2>
                     <form>
                         <label>
                             User Name
                                 <input 
+                                    id='username'
                                     style={inputStyle}
                                     name='userName'
                                     type='test'
@@ -155,6 +114,7 @@ class Login extends React.Component {
                         <label>
                             Password
                                 <input 
+                                    id='password'
                                     style={inputStyle}
                                     name='password'
                                     type='password'
@@ -165,6 +125,7 @@ class Login extends React.Component {
                         <label>
                             Email
                                 <input 
+                                    id='email'
                                     style={inputStyle}
                                     name='email'
                                     type='email'
